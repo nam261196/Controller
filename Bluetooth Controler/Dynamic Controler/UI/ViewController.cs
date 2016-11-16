@@ -35,7 +35,7 @@ namespace Dynamic_Controler
             MainActivity.btnScanDevice = (Button)_Context.FindViewById(Resource.Id.btnscandevice);
             MainActivity.btnController = (ImageButton)_Context.FindViewById(Resource.Id.btncontroller);
 
-            MainActivity.txtMode = (TextView)_Context.FindViewById(Resource.Id.controllerlabel);
+            MainActivity.txtMode = (TextView)_Context.FindViewById(Resource.Id.statuslabel);
             MainActivity.txtFlow = (TextView)_Context.FindViewById(Resource.Id.flowresult);
             MainActivity.txtHumidity = (TextView)_Context.FindViewById(Resource.Id.humidityresult);
             MainActivity.txtTemperature = (TextView)_Context.FindViewById(Resource.Id.temperatureresult);

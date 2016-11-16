@@ -32,7 +32,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/searchlayout"
+            android:id="@+id/statuslayout"
             android:layout_marginBottom="20dp"
             android:gravity="center_horizontal">
             <Button
@@ -46,7 +46,7 @@
                 android:id="@+id/btnauto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/searchlayout" />
+                android:layout_toRightOf="@+id/statuslayout" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -56,7 +56,7 @@
             android:gravity="right"
             android:layout_marginRight="12.0dp">
             <TextView
-                android:id="@+id/controllerlabel"
+                android:id="@+id/statuslabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pump Controller: "

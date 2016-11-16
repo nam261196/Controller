@@ -115,41 +115,38 @@ namespace Dynamic_Controler
 			// aapt resource value: 0x7f08000a
 			public const int btnauto = 2131230730;
 			
-			// aapt resource value: 0x7f08000d
-			public const int btncontroller = 2131230733;
+			// aapt resource value: 0x7f08000c
+			public const int btncontroller = 2131230732;
 			
 			// aapt resource value: 0x7f080009
 			public const int btnscandevice = 2131230729;
 			
+			// aapt resource value: 0x7f08001e
+			public const int buttonPrompt = 2131230750;
+			
+			// aapt resource value: 0x7f080022
+			public const int editTextDialogUserInput = 2131230754;
+			
 			// aapt resource value: 0x7f08001f
-			public const int buttonPrompt = 2131230751;
+			public const int editTextResult = 2131230751;
 			
-			// aapt resource value: 0x7f08000c
-			public const int controllerlabel = 2131230732;
-			
-			// aapt resource value: 0x7f080023
-			public const int editTextDialogUserInput = 2131230755;
-			
-			// aapt resource value: 0x7f080020
-			public const int editTextResult = 2131230752;
+			// aapt resource value: 0x7f080016
+			public const int flowlabel = 2131230742;
 			
 			// aapt resource value: 0x7f080017
-			public const int flowlabel = 2131230743;
+			public const int flowresult = 2131230743;
 			
-			// aapt resource value: 0x7f080018
-			public const int flowresult = 2131230744;
+			// aapt resource value: 0x7f080010
+			public const int humiditylabel = 2131230736;
 			
 			// aapt resource value: 0x7f080011
-			public const int humiditylabel = 2131230737;
-			
-			// aapt resource value: 0x7f080012
-			public const int humidityresult = 2131230738;
+			public const int humidityresult = 2131230737;
 			
 			// aapt resource value: 0x7f080007
 			public const int imageView1 = 2131230727;
 			
-			// aapt resource value: 0x7f080021
-			public const int layout_root = 2131230753;
+			// aapt resource value: 0x7f080020
+			public const int layout_root = 2131230752;
 			
 			// aapt resource value: 0x7f080003
 			public const int listDevice = 2131230723;
@@ -157,53 +154,53 @@ namespace Dynamic_Controler
 			// aapt resource value: 0x7f080005
 			public const int mainlayout = 2131230725;
 			
-			// aapt resource value: 0x7f080024
-			public const int nameDevice = 2131230756;
+			// aapt resource value: 0x7f080023
+			public const int nameDevice = 2131230755;
 			
-			// aapt resource value: 0x7f08000e
-			public const int parameters = 2131230734;
+			// aapt resource value: 0x7f08000d
+			public const int parameters = 2131230733;
 			
 			// aapt resource value: 0x7f080004
 			public const int scrollView1 = 2131230724;
 			
-			// aapt resource value: 0x7f080008
-			public const int searchlayout = 2131230728;
-			
 			// aapt resource value: 0x7f08000b
-			public const int statuslayout = 2131230731;
+			public const int statuslabel = 2131230731;
 			
-			// aapt resource value: 0x7f080010
-			public const int tableRow1 = 2131230736;
-			
-			// aapt resource value: 0x7f080013
-			public const int tableRow2 = 2131230739;
-			
-			// aapt resource value: 0x7f080016
-			public const int tableRow3 = 2131230742;
-			
-			// aapt resource value: 0x7f080019
-			public const int tableRow4 = 2131230745;
-			
-			// aapt resource value: 0x7f08001c
-			public const int tableRow5 = 2131230748;
+			// aapt resource value: 0x7f080008
+			public const int statuslayout = 2131230728;
 			
 			// aapt resource value: 0x7f08000f
-			public const int tblparameters = 2131230735;
+			public const int tableRow1 = 2131230735;
 			
-			// aapt resource value: 0x7f080014
-			public const int temperaturelabel = 2131230740;
+			// aapt resource value: 0x7f080012
+			public const int tableRow2 = 2131230738;
 			
 			// aapt resource value: 0x7f080015
-			public const int temperatureresult = 2131230741;
+			public const int tableRow3 = 2131230741;
 			
-			// aapt resource value: 0x7f080022
-			public const int textView1 = 2131230754;
+			// aapt resource value: 0x7f080018
+			public const int tableRow4 = 2131230744;
+			
+			// aapt resource value: 0x7f08001b
+			public const int tableRow5 = 2131230747;
+			
+			// aapt resource value: 0x7f08000e
+			public const int tblparameters = 2131230734;
+			
+			// aapt resource value: 0x7f080013
+			public const int temperaturelabel = 2131230739;
+			
+			// aapt resource value: 0x7f080014
+			public const int temperatureresult = 2131230740;
+			
+			// aapt resource value: 0x7f080021
+			public const int textView1 = 2131230753;
+			
+			// aapt resource value: 0x7f08001c
+			public const int timelabel = 2131230748;
 			
 			// aapt resource value: 0x7f08001d
-			public const int timelabel = 2131230749;
-			
-			// aapt resource value: 0x7f08001e
-			public const int timeresult = 2131230750;
+			public const int timeresult = 2131230749;
 			
 			// aapt resource value: 0x7f080006
 			public const int title = 2131230726;
@@ -211,11 +208,11 @@ namespace Dynamic_Controler
 			// aapt resource value: 0x7f080000
 			public const int title_text = 2131230720;
 			
-			// aapt resource value: 0x7f08001a
-			public const int todaylabel = 2131230746;
+			// aapt resource value: 0x7f080019
+			public const int todaylabel = 2131230745;
 			
-			// aapt resource value: 0x7f08001b
-			public const int todayresult = 2131230747;
+			// aapt resource value: 0x7f08001a
+			public const int todayresult = 2131230746;
 			
 			static Id()
 			{
