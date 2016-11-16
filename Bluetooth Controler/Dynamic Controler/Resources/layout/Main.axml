@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:background="#4d4d4d"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainlayout">
+        <TextView
+            android:text="Pump Controller Via Bluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@android:color/holo_blue_dark" />
+        <ImageView
+            android:src="@drawable/image_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView1"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchlayout"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal">
+            <Button
+                android:id="@+id/btnscandevice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scan Bluetooth Devices"
+                android:enabled="false" />
+            <ImageView
+                android:src="@drawable/refresh_icon"
+                android:id="@+id/btnrefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/statuslayout" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/statuslayout"
+            android:gravity="right"
+            android:layout_marginRight="12.0dp">
+            <TextView
+                android:id="@+id/statuslabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pump's status: "
+                android:textStyle="italic"
+                android:textSize="20sp"
+                android:layout_marginRight="12.0dp" />
+            <ImageButton
+                android:src="@drawable/off_enable"
+                android:id="@+id/btncontroller"
+                android:background="#333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/statuslayout" />
+        </LinearLayout>
+        <TextView
+            android:text="Parameters:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/parameters"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold|italic"
+            android:textSize="20sp" />
+        <TableLayout
+            android:id="@+id/tblparameters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:stretchColumns="*"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:id="@+id/humiditylabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Humidity sensor: "
+                    android:layout_column="0"
+                    android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/humidityresult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="...%"
+                    android:layout_column="1" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:id="@+id/temperaturelabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperature sensor: "
+                    android:layout_column="0"
+                    android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/temperatureresult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="...Celsius"
+                    android:layout_column="1" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:id="@+id/flowlabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flow sensor: "
+                    android:layout_column="0"
+                    android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/flowresult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unknown"
+                    android:layout_column="1" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:id="@+id/todaylabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Today:"
+                    android:layout_column="0"
+                    android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/todayresult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unknown"
+                    android:layout_column="1" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:id="@+id/timelabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Time:"
+                    android:layout_column="0"
+                    android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/timeresult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unknown"
+                    android:layout_column="1" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>
