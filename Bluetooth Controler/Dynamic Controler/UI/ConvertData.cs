@@ -3,9 +3,12 @@ using System.Text;
 
 namespace Dynamic_Controler
 {
+    /// <summary>
+    /// Convert Data Byte to Hex, Hex to Float
+    /// </summary>
     public class ConvertData
     {
-        public ConvertData ()
+        public ConvertData()
         {
 
         }
@@ -42,19 +45,19 @@ namespace Dynamic_Controler
                     }
                     break;
 
-                case 2:
-                    for (int i = 9; i < strConvert.Length; i++)
-                    {
-                        if (i < 13)
-                        {
-                            hex.AppendFormat("{0:x2}", strConvert[i]);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    break;
+                //case 2:
+                //    for (int i = 9; i < strConvert.Length; i++)
+                //    {
+                //        if (i < 13)
+                //        {
+                //            hex.AppendFormat("{0:x2}", strConvert[i]);
+                //        }
+                //        else
+                //        {
+                //            break;
+                //        }
+                //    }
+                //    break;
                 default:
                     //showToast("Không thể nhận dữ liệu");
                     break;

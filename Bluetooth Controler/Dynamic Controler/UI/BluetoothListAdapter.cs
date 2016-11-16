@@ -13,11 +13,14 @@ using Android.Bluetooth;
 
 namespace Dynamic_Controler
 {
+    /// <summary>
+    /// Show list device bluetooth
+    /// </summary>
     class BluetoothListAdapter
     {
         Context _Context;
         BluetoothHandler _BluetoothHandler = new BluetoothHandler();
-        public BluetoothListAdapter (Context c)
+        public BluetoothListAdapter(Context c)
         {
             _Context = c;
         }
@@ -42,7 +45,7 @@ namespace Dynamic_Controler
         /// </summary>
         public void SaveToListOld()
         {
-            for (int i = 0; i <MainActivity.mListDeviceCurrent.Count; i++)
+            for (int i = 0; i < MainActivity.mListDeviceCurrent.Count; i++)
             {
                 if (CheckIsHave(MainActivity.mListDeviceCurrent[i], MainActivity.mListDeviceOld))
                 {
@@ -57,45 +60,45 @@ namespace Dynamic_Controler
 
         public void ShowListOld()
         {
-            MainActivity.mListDeviceOld.Sort((x, y) => string.Compare(x.Name, y.Name));
-            PopupMenu menu = new PopupMenu(_Context, MainActivity.btnScanDevice);
-            menu.Inflate(Resource.Menu.menu_device);
-            if (MainActivity.mMenuOld != null)
-            {
-                MainActivity.mMenuOld.Dismiss();
-                for (int i = 0; i < MainActivity.mListDeviceOld.Count; i++)
-                {
-                    menu.Menu.Add(MainActivity.mListDeviceOld[i].Name);
-                }
-                menu.Show();
-                menu.MenuItemClick += (s, e) =>
-                {
-                    _BluetoothHandler.BondedDevice(MainActivity.mListDeviceCurrent, e.Item);
-                };
-                MainActivity.mMenuOld = menu;
-            }
+            //MainActivity.mListDeviceOld.Sort((x, y) => string.Compare(x.Name, y.Name));
+            //PopupMenu menu = new PopupMenu(_Context, MainActivity.btnScanDevice);
+            //menu.Inflate(Resource.Menu.menu_device);
+            //if (MainActivity.mMenuOld != null)
+            //{
+            //    MainActivity.mMenuOld.Dismiss();
+            //    for (int i = 0; i < MainActivity.mListDeviceOld.Count; i++)
+            //    {
+            //        menu.Menu.Add(MainActivity.mListDeviceOld[i].Name);
+            //    }
+            //    menu.Show();
+            //    menu.MenuItemClick += (s, e) =>
+            //    {
+            //        _BluetoothHandler.BondedDevice(MainActivity.mListDeviceCurrent, e.Item);
+            //    };
+            //    MainActivity.mMenuOld = menu;
+            //}
 
         }
 
         public void ShowListCurrent()
         {
-            MainActivity.mListDeviceOld.Sort((x, y) => string.Compare(x.Name, y.Name));
-            PopupMenu menu = new PopupMenu(_Context, MainActivity.btnScanDevice);
-            menu.Inflate(Resource.Menu.menu_device);
-            if (MainActivity.mMenuOld != null)
-            {
-                MainActivity.mMenuOld.Dismiss();
-                for (int i = 0; i < MainActivity.mListDeviceCurrent.Count; i++)
-                {
-                    menu.Menu.Add(MainActivity.mListDeviceCurrent[i].Name);
-                }
-                menu.Show();
-                menu.MenuItemClick += (s, e) =>
-                {
-                    _BluetoothHandler.BondedDevice(MainActivity.mListDeviceCurrent, e.Item);
-                };
-                MainActivity.mMenuOld = menu;
-            }
+            //MainActivity.mListDeviceOld.Sort((x, y) => string.Compare(x.Name, y.Name));
+            //PopupMenu menu = new PopupMenu(_Context, MainActivity.btnScanDevice);
+            //menu.Inflate(Resource.Menu.menu_device);
+            //if (MainActivity.mMenuOld != null)
+            //{
+            //    MainActivity.mMenuOld.Dismiss();
+            //    for (int i = 0; i < MainActivity.mListDeviceCurrent.Count; i++)
+            //    {
+            //        menu.Menu.Add(MainActivity.mListDeviceCurrent[i].Name);
+            //    }
+            //    menu.Show();
+            //    menu.MenuItemClick += (s, e) =>
+            //    {
+            //        _BluetoothHandler.BondedDevice(MainActivity.mListDeviceCurrent, e.Item);
+            //    };
+            //    MainActivity.mMenuOld = menu;
+            //}
 
         }
 

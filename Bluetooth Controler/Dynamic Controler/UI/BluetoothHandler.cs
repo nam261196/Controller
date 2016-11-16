@@ -10,18 +10,16 @@ using System.Threading;
 
 namespace Dynamic_Controler
 {
+    /// <summary>
+    /// Check state bluetooth of this device moblie, handle bond or rebond. If bonded to a device, excute SendDataTo device.
+    /// </summary>
     class BluetoothHandler
     {
-        public BluetoothHandler ()
+        public BluetoothHandler()
         {
 
         }
 
-        /// <summary>
-        /// Bonded a device when choose from menu device.
-        /// </summary>
-        /// <param name="listCurrent"></param>
-        /// <param name="item"></param>
         public void showToast(string str)
         {
             Toast.MakeText(Application.Context, str, ToastLength.Short).Show();
@@ -57,77 +55,49 @@ namespace Dynamic_Controler
                 {
                     showToast("Bluetooth is NOT Enabled!");
                     MainActivity.bluetoothAdapter.Enable();
-                    
+
 
                 }
             }
 
         }
 
-        public async void BondedDevice(List<BluetoothDevice> listCurrent, IMenuItem item)
+        public bool CheckBondState(BluetoothDevice device)
         {
-            //bond
-
-            Task Bonded = Task.Factory.StartNew(() =>
-            { 
-                for (int i = 0; 0 < listCurrent.Count; i++)
-                {
-                    if (listCurrent[i].Name == item.ToString())
-                    {
-                        if (listCurrent[i].BondState != Bond.Bonded)
-                        {
-
-                            {
-                                BluetoothSocket tmp = null;
-                                Timer t = null;
-                                try
-                                {
-                                    tmp = listCurrent[i].CreateRfcommSocketToServiceRecord(Java.Util.UUID.FromString("00001101-0000-1000-8000-00805F9B34FB"));
-                                    MainActivity.bluetoothAdapter.CancelDiscovery();
-                                    try
-                                    {
-                                        tmp.Connect();
-                                        t = new Timer(x => MainActivity._DataCollector.AutoGetData(tmp), null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
-                                        MainActivity.mBondedDevice = listCurrent[i];
-                                        MainActivity.mTimer = t;
-                                        MainActivity.mSocket = tmp;
-
-                                    }
-                                    catch
-                                    {
-                                        try
-                                        {
-                                            tmp.Close();
-                                            t.Dispose();
-                                            showToast("Socket error. Socket is closed");
-                                        }
-                                        catch { }
-                                    }
-                                }
-                                catch
-                                {
-                                    try
-                                    {
-                                        tmp.Close();
-                                        t.Dispose();
-                                        showToast("Socket error. Socket is closed");
-                                    }
-                                    catch { }
-                                }
-
-
-                            }
-
-                            break;
-                        }
-                    }
-                }
-            });
-            await Bonded;
+            bool BondState = false;
+            if (device.BondState == Bond.Bonded)
+            {
+                BondState = true;
+            }
+            else
+            {
+                BondState = false;
+            }
+            return BondState;
         }
-        /// <summary>
-        /// Show list device is found.
-        /// </summary>
+
+        public void BondedDevice(BluetoothDevice device)
+        {
+            try
+            {
+                MainActivity.bluetoothAdapter.CancelDiscovery();
+                BluetoothSocket tmpSocket = null;
+                Timer t = null;
+                tmpSocket = device.CreateRfcommSocketToServiceRecord(Java.Util.UUID.FromString("00001101-0000-1000-8000-00805F9B34FB"));
+                tmpSocket.Connect();
+                t = new Timer(x => MainActivity._DataCollector.AutoGetData(tmpSocket), null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+                MainActivity.mBondedDevice = device;
+                MainActivity.mTimer = t;
+                MainActivity.mSocket = tmpSocket;
+                MainActivity.mBondedDevice = device;
+                showToast("State connection: " + MainActivity.mSocket.IsConnected);
+            }
+            catch
+            {
+                showToast("Can't bond this device. Please Re-scan bluetooth device.");
+            }
+        }
+
         public void Initialize()
         {
 
@@ -197,62 +167,32 @@ namespace Dynamic_Controler
             }
 
         }
+
         /// <summary>
         /// If have a device bonded, re-bonded this device.
         /// </summary>
         /// <param name="device"></param>
-        public async void ReBondedDevice(BluetoothDevice device)
+        public void UnBondedAllDevice(BluetoothDevice device)
         {
-            Task ReBonded = Task.Factory.StartNew(() =>
+            ICollection<BluetoothDevice> btcollect = MainActivity.bluetoothAdapter.BondedDevices;
+            List<BluetoothDevice> allDevice = btcollect.ToList();
+            if (allDevice.Count != 0)
             {
-                BluetoothSocket tmp = null;
-                Timer t = null;
-                try
-                {
-                    tmp = device.CreateRfcommSocketToServiceRecord(Java.Util.UUID.FromString("00001101-0000-1000-8000-00805F9B34FB"));
-                    //listCurrent[i].CreateBond();
-                    MainActivity.bluetoothAdapter.CancelDiscovery();
-                    try
-                    {
-                        tmp.Connect();
-                        byte[] temp = new byte[100];
-                        //tmp.InputStream.Read(temp, 0, temp.Length);
-                        ////SendDataTo(socket);
-                        //GetDataFrom(temp);
-                        showToast("Re-bond device: " + device.Name + " complete");
-                        t = new Timer(x => MainActivity._DataCollector.AutoGetData(tmp), null, TimeSpan.FromSeconds(0.5), TimeSpan.FromSeconds(0.5));
-                        MainActivity.mTimer = t;
-                        MainActivity.mSocket = tmp;
-                    }
-                    catch
-                    {
-                        try
-                        {
-                            tmp.Close();
-                            t.Dispose();
-                            showToast("Can't bond to this device. Socket is closed");
-                        }
-                        catch
-                        {
-
-                        }
-                    }
-                }
-                catch
+                for (int i = 0; i < allDevice.Count; i++)
                 {
                     try
                     {
-                        tmp.Close();
-                        t.Dispose();
-                        showToast("Socket error. Socket is closed");
+                        Java.Lang.Reflect.Method method = allDevice[i].Class.GetMethod("removeBond", null);
+                        method.Invoke(allDevice[i], null);
                     }
-                    catch
+                    catch (Exception)
                     {
-
+                        showToast("Can't unbond this device");
                     }
                 }
 
-            });
+            }
+
         }
     }
 }

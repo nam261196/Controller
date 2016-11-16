@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Android.Views.Animations;
 using System.Linq;
 using System.Threading;
+using Android.Views;
 
 namespace Dynamic_Controler
 {
@@ -16,7 +17,7 @@ namespace Dynamic_Controler
         ScreenOrientation = Android.Content.PM.ScreenOrientation.SensorPortrait)]
     public class MainActivity : Activity
     {
-        public MainActivity ()
+        public MainActivity()
         {
 
         }
@@ -24,14 +25,16 @@ namespace Dynamic_Controler
         public static Activity _Activity;
         public static Button btnScanDevice;
 
-        public static ImageView btnRefresh;
+        public static ImageView btnAuto;
+        public static bool _FlagCheckAuto = true;
+
         public static ImageButton btnController;
 
         public static Animation AminationRefresh;
-        public static TextView txtHumidity, txtTemperature, txtFlow, txtToday, txtTime;
+        public static TextView txtMode, txtHumidity, txtTemperature, txtFlow, txtToday, txtTime;
 
         List<BluetoothDevice> btArrayAdapter;
-        
+
         public static List<BluetoothDevice> mListDeviceOld = new List<BluetoothDevice>();
         public static List<BluetoothDevice> mListDeviceCurrent = new List<BluetoothDevice>();
         public static PopupMenu mMenuOld;
@@ -85,22 +88,21 @@ namespace Dynamic_Controler
             mResultGetData[0] = 126;//header
             mResultGetData[mResultGetData.Length - 1] = 03;//ender
 
-            
+
 
             DateTime today = DateTime.Now;
             AminationRefresh = AnimationUtils.LoadAnimation(this, Resource.Animation.rotate_centre);
             Timer t = new Timer(x => UpdateTime(), null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
             bluetoothAdapter = BluetoothAdapter.DefaultAdapter;
-
             ICollection<BluetoothDevice> btcollect = bluetoothAdapter.BondedDevices;
             List<BluetoothDevice> btlistbond = btcollect.ToList();
 
-            if (btlistbond.Count != 0)
-            {
-                mBondedDevice = btlistbond[0];
-                _BluetoothHandler.ReBondedDevice(mBondedDevice);
-                showToast("Bonded: " + mBondedDevice.Name);
-            }
+            //if (btlistbond.Count != 0)
+            //{
+            //    mBondedDevice = btlistbond[0];
+            //    _BluetoothHandler.ReBondedDevice(mBondedDevice);
+            //    showToast("Bonded: " + mBondedDevice.Name);
+            //}
 
             LinearLayout layout = (LinearLayout)FindViewById(Resource.Id.mainlayout);
             Intent discoverableIntent = new Intent(BluetoothAdapter.ActionRequestDiscoverable);
@@ -110,6 +112,7 @@ namespace Dynamic_Controler
             btArrayAdapter = new List<BluetoothDevice>();
             mMenuOld = new PopupMenu(this, btnScanDevice);
 
+            RegisterReceiver(_ActionFoundReceiver, new IntentFilter(BluetoothDevice.ActionBondStateChanged));
 
             RegisterReceiver(_ActionFoundReceiver, new IntentFilter(BluetoothDevice.ActionFound));
             _BluetoothHandler.CheckBlueToothState();
@@ -119,19 +122,20 @@ namespace Dynamic_Controler
                 mMenuOld.Menu.Clear();
             };
             _ViewController.Controller();
-            
+
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
             UnregisterReceiver(_ActionFoundReceiver);
+            _BluetoothHandler.UnBondedAllDevice(mBondedDevice);
         }
 
         /// <summary>
         /// Check this device enable or disable bluetooth.
         /// </summary>
-        
+
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
@@ -142,6 +146,37 @@ namespace Dynamic_Controler
 
         }
 
+
+
+        public override bool OnKeyDown([GeneratedEnum] Keycode keyCode, KeyEvent e)
+        {
+            if (keyCode == Keycode.Back)
+            {
+                Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
+                builder.SetTitle("Thoát ứng dụng")
+                       .SetMessage("Bạn muốn thoát?")
+                       .SetIcon(Android.Resource.Drawable.IcDialogAlert)
+                       .SetPositiveButton("Có", delegate
+                       {
+                           try
+                           {
+                               _BluetoothHandler.UnBondedAllDevice(mBondedDevice);
+                               showToast("Unbond device and close this app");
+                           }
+                           catch
+                           {
+                           }
+                           Finish();
+                           Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+                       })
+                       .SetNegativeButton("Không", delegate
+                       {
+                       });
+                Android.App.AlertDialog alert = builder.Create();
+                alert.Show();
+            }
+            return base.OnKeyDown(keyCode, e);
+        }
 
     }
 }

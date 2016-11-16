@@ -70,22 +70,28 @@ namespace Dynamic_Controler
 			public const int Image_Logo = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int Off_Enable = 2130837507;
+			public const int Off_Auto = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int On_Enable = 2130837508;
+			public const int Off_Enable = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int Refresh_Icon = 2130837509;
+			public const int On_Auto = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int Refresh_Icon_2 = 2130837510;
+			public const int On_Enable = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int Splash_Screen_Horizontal = 2130837511;
+			public const int Refresh_Icon = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int Splash_Screen_Vertical = 2130837512;
+			public const int Refresh_Icon_2 = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int Splash_Screen_Horizontal = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int Splash_Screen_Vertical = 2130837514;
 			
 			static Drawable()
 			{
@@ -106,17 +112,20 @@ namespace Dynamic_Controler
 			// aapt resource value: 0x7f080002
 			public const int btnRefresh = 2131230722;
 			
+			// aapt resource value: 0x7f08000a
+			public const int btnauto = 2131230730;
+			
 			// aapt resource value: 0x7f08000d
 			public const int btncontroller = 2131230733;
-			
-			// aapt resource value: 0x7f08000a
-			public const int btnrefresh = 2131230730;
 			
 			// aapt resource value: 0x7f080009
 			public const int btnscandevice = 2131230729;
 			
 			// aapt resource value: 0x7f08001f
 			public const int buttonPrompt = 2131230751;
+			
+			// aapt resource value: 0x7f08000c
+			public const int controllerlabel = 2131230732;
 			
 			// aapt resource value: 0x7f080023
 			public const int editTextDialogUserInput = 2131230755;
@@ -159,9 +168,6 @@ namespace Dynamic_Controler
 			
 			// aapt resource value: 0x7f080008
 			public const int searchlayout = 2131230728;
-			
-			// aapt resource value: 0x7f08000c
-			public const int statuslabel = 2131230732;
 			
 			// aapt resource value: 0x7f08000b
 			public const int statuslayout = 2131230731;

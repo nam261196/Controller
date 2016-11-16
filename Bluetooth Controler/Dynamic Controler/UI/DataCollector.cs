@@ -3,24 +3,34 @@ using Android.Content;
 using Android.Widget;
 using Android.Bluetooth;
 using System.Threading.Tasks;
+using Android.App;
 
 namespace Dynamic_Controler
 {
+    /// <summary>
+    /// Auto get data after bonded with a device
+    /// </summary>
     public class DataCollector
     {
         Context _Context;
-        ConvertData mConverterData;
-        public DataCollector (Context _context)
+        ConvertData mConverterData = new ConvertData();
+        Activity _Activity;
+        public DataCollector(Activity activity)
         {
-            _Context = _context;
+            _Activity = activity;
         }
-        public async void AutoGetData(BluetoothSocket socket)
+
+        //public DataCollector(Context _context)
+        //{
+        //    _Context = _context;
+        //}
+
+        public void AutoGetData(BluetoothSocket socket)
         {
-            Task data = Task.Factory.StartNew(() =>
-            {
-                ReceiveData2(socket);
-            });
-            await data;
+
+            _Activity.RunOnUiThread(() =>
+            ReceiveData2(socket)
+            );
         }
         public void showToast(string str)
         {
@@ -28,7 +38,7 @@ namespace Dynamic_Controler
         }
         public void ReceiveData2(BluetoothSocket socket)
         {
-            byte[] resultArray = new byte[14];
+            byte[] resultArray = new byte[10];
             resultArray[0] = 126;
             resultArray[resultArray.Length - 1] = 03;
             byte[] temp = new byte[30];
@@ -40,15 +50,13 @@ namespace Dynamic_Controler
                 {
                     if (temp[i] == 126)
                     {
-                        System.Array.Copy(temp, i + 1, resultArray, 1, 12);
+                        System.Array.Copy(temp, i + 1, resultArray, 1, 8);
                         result = mConverterData.ConvertHexToFloat(mConverterData.ConvertByteToHex(resultArray, 0));
                         MainActivity.txtHumidity.Text = Math.Round(result, 2).ToString();
 
                         result = mConverterData.ConvertHexToFloat(mConverterData.ConvertByteToHex(resultArray, 1));
                         MainActivity.txtFlow.Text = Math.Round(result, 2).ToString();
 
-                        result = mConverterData.ConvertHexToFloat(mConverterData.ConvertByteToHex(resultArray, 2));
-                        MainActivity.txtTemperature.Text = Math.Round(result, 2).ToString();
                         break;
                     }
                 }
@@ -61,28 +69,28 @@ namespace Dynamic_Controler
         }
 
 
-       /* public string ReceiveData(BluetoothSocket socket)
-        {
-            string result = "";
-            try
-            {
-                if (MainActivity.bluetoothAdapter.IsEnabled)
-                {
-                    float data = (float)socket.InputStream.ReadByte();
-                    result = data.ToString() + "%";
-                }
-                else
-                {
-                    result = "Bluetooth is disable";
-                }
-            }
-            catch
-            {
-                result = "";
-            }
+        /* public string ReceiveData(BluetoothSocket socket)
+         {
+             string result = "";
+             try
+             {
+                 if (MainActivity.bluetoothAdapter.IsEnabled)
+                 {
+                     float data = (float)socket.InputStream.ReadByte();
+                     result = data.ToString() + "%";
+                 }
+                 else
+                 {
+                     result = "Bluetooth is disable";
+                 }
+             }
+             catch
+             {
+                 result = "";
+             }
 
 
-            return result;
-        } */
+             return result;
+         } */
     }
 }

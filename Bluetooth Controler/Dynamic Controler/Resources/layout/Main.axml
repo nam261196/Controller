@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView1"
     android:background="#4d4d4d"
     android:layout_width="match_parent"
@@ -41,11 +42,11 @@
                 android:text="Scan Bluetooth Devices"
                 android:enabled="false" />
             <ImageView
-                android:src="@drawable/refresh_icon"
-                android:id="@+id/btnrefresh"
+                android:src="@drawable/On_Auto"
+                android:id="@+id/btnauto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/statuslayout" />
+                android:layout_toRightOf="@+id/searchlayout" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -55,20 +56,22 @@
             android:gravity="right"
             android:layout_marginRight="12.0dp">
             <TextView
-                android:id="@+id/statuslabel"
+                android:id="@+id/controllerlabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pump's status: "
+                android:text="Pump Controller: "
                 android:textStyle="italic"
                 android:textSize="20sp"
-                android:layout_marginRight="12.0dp" />
+                android:layout_marginRight="12.0dp"
+                android:visibility="invisible" />
             <ImageButton
                 android:src="@drawable/off_enable"
                 android:id="@+id/btncontroller"
                 android:background="#333333"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/statuslayout" />
+                android:layout_toRightOf="@+id/statuslayout"
+                android:visibility="invisible" />
         </LinearLayout>
         <TextView
             android:text="Parameters:"
