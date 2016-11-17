@@ -59,6 +59,7 @@
     <Compile Include="UI\BluetoothHandler.cs" />
     <Compile Include="UI\BluetoothListAdapter.cs" />
     <Compile Include="UI\ListDevice\ListDeviceActivity.cs" />
+    <Compile Include="UI\SwitchMode.cs" />
     <Compile Include="UI\ViewController.cs" />
     <Compile Include="UI\ConvertData.cs" />
     <Compile Include="UI\DataCollector.cs" />

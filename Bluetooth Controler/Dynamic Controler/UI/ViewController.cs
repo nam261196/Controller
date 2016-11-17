@@ -14,7 +14,7 @@ namespace Dynamic_Controler
         //MainActivity _MainActivity = new MainActivity();
         Activity _Context;
         BluetoothHandler _BluetoothHandler = new BluetoothHandler();
-        //SwitchMode _SwitchMode = new SwitchMode();
+        SwitchMode _SwitchMode = new SwitchMode();
         public ViewController(Activity context)
         {
             _Context = context;
@@ -131,14 +131,14 @@ namespace Dynamic_Controler
                 //MainActivity.btnAuto.StartAnimation(MainActivity.AminationRefresh);
                 //_BluetoothHandler.Initialize();
                 //showToast("Refresh Complete!!");
-                //if (MainActivity._FlagCheckAuto)//If Auto mode is enable
-                //{
-                //    _SwitchMode.SwitchToManual();
-                //}
-                //else
-                //{
-                //    _SwitchMode.SwitchToAuto();
-                //}
+                if (MainActivity._FlagCheckAuto)//If Auto mode is enable
+                {
+                    _SwitchMode.SwitchToManual();
+                }
+                else
+                {
+                    _SwitchMode.SwitchToAuto();
+                }
             };
 
             MainActivity.btnScanDevice.Click += delegate
