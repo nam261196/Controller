@@ -1,14 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.Bluetooth;
 
 namespace Dynamic_Controler
@@ -58,55 +49,6 @@ namespace Dynamic_Controler
             }
         }
 
-        public void ShowListOld()
-        {
-            //MainActivity.mListDeviceOld.Sort((x, y) => string.Compare(x.Name, y.Name));
-            //PopupMenu menu = new PopupMenu(_Context, MainActivity.btnScanDevice);
-            //menu.Inflate(Resource.Menu.menu_device);
-            //if (MainActivity.mMenuOld != null)
-            //{
-            //    MainActivity.mMenuOld.Dismiss();
-            //    for (int i = 0; i < MainActivity.mListDeviceOld.Count; i++)
-            //    {
-            //        menu.Menu.Add(MainActivity.mListDeviceOld[i].Name);
-            //    }
-            //    menu.Show();
-            //    menu.MenuItemClick += (s, e) =>
-            //    {
-            //        _BluetoothHandler.BondedDevice(MainActivity.mListDeviceCurrent, e.Item);
-            //    };
-            //    MainActivity.mMenuOld = menu;
-            //}
-
-        }
-
-        public void ShowListCurrent()
-        {
-            //MainActivity.mListDeviceOld.Sort((x, y) => string.Compare(x.Name, y.Name));
-            //PopupMenu menu = new PopupMenu(_Context, MainActivity.btnScanDevice);
-            //menu.Inflate(Resource.Menu.menu_device);
-            //if (MainActivity.mMenuOld != null)
-            //{
-            //    MainActivity.mMenuOld.Dismiss();
-            //    for (int i = 0; i < MainActivity.mListDeviceCurrent.Count; i++)
-            //    {
-            //        menu.Menu.Add(MainActivity.mListDeviceCurrent[i].Name);
-            //    }
-            //    menu.Show();
-            //    menu.MenuItemClick += (s, e) =>
-            //    {
-            //        _BluetoothHandler.BondedDevice(MainActivity.mListDeviceCurrent, e.Item);
-            //    };
-            //    MainActivity.mMenuOld = menu;
-            //}
-
-        }
-
-        /// <summary>
-        /// 
-        /// If a device have in old list but haven't in current list, It was disabled bluetooth.
-        ///
-        /// </summary>
         public void DeleteDeviceDisable()
         {
             for (int i = 0; i < MainActivity.mListDeviceOld.Count; i++)

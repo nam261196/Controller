@@ -1,7 +1,7 @@
 using System;
 using Android.App;
 using Android.Widget;
-using Android.Content;
+using Dynamic_Controler.UI;
 
 namespace Dynamic_Controler
 {

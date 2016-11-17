@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
-using Android.Views;
 using Android.Widget;
 using Android.Bluetooth;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace Dynamic_Controler

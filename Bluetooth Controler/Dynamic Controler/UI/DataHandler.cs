@@ -2,7 +2,6 @@ using System;
 using Android.Content;
 using Android.Widget;
 using Android.Bluetooth;
-using System.Threading.Tasks;
 using Android.App;
 
 namespace Dynamic_Controler
@@ -10,12 +9,12 @@ namespace Dynamic_Controler
     /// <summary>
     /// Auto get data after bonded with a device
     /// </summary>
-    public class DataCollector
+    public class DataHandler
     {
         Context _Context;
         ConvertData mConverterData = new ConvertData();
         Activity _Activity;
-        public DataCollector(Activity activity)
+        public DataHandler(Activity activity)
         {
             _Activity = activity;
         }
@@ -69,28 +68,5 @@ namespace Dynamic_Controler
         }
 
 
-        /* public string ReceiveData(BluetoothSocket socket)
-         {
-             string result = "";
-             try
-             {
-                 if (MainActivity.bluetoothAdapter.IsEnabled)
-                 {
-                     float data = (float)socket.InputStream.ReadByte();
-                     result = data.ToString() + "%";
-                 }
-                 else
-                 {
-                     result = "Bluetooth is disable";
-                 }
-             }
-             catch
-             {
-                 result = "";
-             }
-
-
-             return result;
-         } */
     }
 }

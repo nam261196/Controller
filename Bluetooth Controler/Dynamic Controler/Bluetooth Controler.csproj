@@ -62,7 +62,7 @@
     <Compile Include="UI\SwitchMode.cs" />
     <Compile Include="UI\ViewController.cs" />
     <Compile Include="UI\ConvertData.cs" />
-    <Compile Include="UI\DataCollector.cs" />
+    <Compile Include="UI\DataHandler.cs" />
     <Compile Include="UI\MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
