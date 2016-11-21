@@ -18,6 +18,10 @@ namespace Dynamic_Controler
         {
             _Activity = activity;
         }
+        public void SendDataTo(byte[] signal)
+        {
+            MainActivity.mSocket.OutputStream.Write(signal, 0, signal.Length);
+        }
 
         //public DataCollector(Context _context)
         //{

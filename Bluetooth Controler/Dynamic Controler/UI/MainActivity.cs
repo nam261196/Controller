@@ -51,8 +51,8 @@ namespace Dynamic_Controler
 
         ConvertData mConverterData = new ConvertData();
         ActionFoundReceiver _ActionFoundReceiver;
-        public static DataHandler _DataCollector;
-        BluetoothHandler _BluetoothHandler = new BluetoothHandler();
+        public static DataHandler _DataHandler;
+        BluetoothHandler _BluetoothHandler;
         BluetoothListAdapter _BluetoothListAdapter;
         ViewController _ViewController;
 
@@ -79,9 +79,9 @@ namespace Dynamic_Controler
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
             _Activity = this;
-
+            _BluetoothHandler = new BluetoothHandler();
             _ActionFoundReceiver = new ActionFoundReceiver(btArrayAdapter, btnScanDevice, this);
-            _DataCollector = new DataHandler(this);
+            _DataHandler = new DataHandler(this);
             _BluetoothListAdapter = new BluetoothListAdapter(this);
             _ViewController = new ViewController(this);
             _ViewController.Init();
