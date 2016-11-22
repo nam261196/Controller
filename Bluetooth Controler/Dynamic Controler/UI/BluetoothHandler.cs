@@ -13,7 +13,6 @@ namespace Dynamic_Controler
     /// </summary>
     class BluetoothHandler
     {
-        private BluetoothSocket tmpSocket = null;
         public BluetoothHandler()
         {
 
@@ -25,14 +24,7 @@ namespace Dynamic_Controler
         }
         public void SendDataTo(byte[] signal)
         {
-            try
-            {
-                MainActivity.mSocket.OutputStream.Write(signal, 0, signal.Length);
-            }
-            catch
-            {
-                Fixbonding();
-            }
+            MainActivity.mSocket.OutputStream.Write(signal, 0, signal.Length);
         }
 
         public void CheckBlueToothState()
@@ -87,10 +79,11 @@ namespace Dynamic_Controler
             try
             {
                 MainActivity.bluetoothAdapter.CancelDiscovery();
+                BluetoothSocket tmpSocket = null;
                 Timer t = null;
                 tmpSocket = device.CreateRfcommSocketToServiceRecord(Java.Util.UUID.FromString("00001101-0000-1000-8000-00805F9B34FB"));
                 tmpSocket.Connect();
-                t = new Timer(x => MainActivity._DataHandler.AutoGetData(tmpSocket), null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+                t = new Timer(x => MainActivity._DataCollector.AutoGetData(tmpSocket), null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
                 MainActivity.mBondedDevice = device;
                 MainActivity.mTimer = t;
                 MainActivity.mSocket = tmpSocket;
@@ -103,20 +96,6 @@ namespace Dynamic_Controler
             }
         }
 
-        public void Fixbonding ()
-        {
-            try
-            {
-                tmpSocket.Dispose();
-                BluetoothDevice device = MainActivity.mBondedDevice;
-                tmpSocket = device.CreateRfcommSocketToServiceRecord(Java.Util.UUID.FromString("00001101-0000-1000-8000-00805F9B34FB"));
-                tmpSocket.Connect();
-            }
-            catch
-            {
-                showToast("error conecting to bluetooth device, please check you bluetooth device");
-            }
-        }
         public void Initialize()
         {
 
